@@ -3,8 +3,16 @@
 
 {% block body %}
 
-
-<p>This is a home page of simple library. Do not hesitate to contact me @napiorkowski.marcin@gmail.com . </p>
-<p> Made in Symfony 5.2.2 </p>
+<div class="container">
+  <div class="row">
+    
+    <div class="col-sm">
+     {% for el in content %}
+        <p>{{ el.stationName}}</p>
+    {% endfor %}
+    </div>
+    
+  </div>
+</div>
 
 {% endblock %}
