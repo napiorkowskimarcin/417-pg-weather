@@ -37,8 +37,8 @@ class HomeController extends AbstractController
         array_splice($element, 3, 1);
         }
         
-        return $this->json($content);
-        //return $this->render('home.html.twig', ['content'=>$content]);
+        // return $this->json($content);
+        return $this->render('home.html.twig', ['content'=>json_encode($content)]);
     }
     
 }

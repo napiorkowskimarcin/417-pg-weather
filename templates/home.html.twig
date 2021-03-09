@@ -4,14 +4,16 @@
 {% block body %}
 
 <main class="container">
+  <div id="findAll" data-findall='{{content}}'></div>
   <div class="row">    
     <div>
     <form >
-        <select id='station'>
+        {# <select id='station'>
         {% for el in content %}
             <option value="{{el.id}}">{{ el.stationName}} </option>
         {% endfor %}
-        </select>
+        </select> #}
+        <select id='station'></select>
     </form>
     </div>
   </div>
