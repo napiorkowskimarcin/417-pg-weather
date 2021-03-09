@@ -3,16 +3,19 @@
 
 {% block body %}
 
-<div class="container">
-  <div class="row">
-    
-    <div class="col-sm">
-     {% for el in content %}
-        <p>{{ el.stationName}}</p>
-    {% endfor %}
+<main class="container">
+  <div class="row">    
+    <div>
+    <form >
+        <select id='station'>
+        {% for el in content %}
+            <option value = {{el.id}}>{{ el.stationName}} </option>
+        {% endfor %}
+        </select>
+    </form>
+
     </div>
-    
   </div>
-</div>
+</main>
 
 {% endblock %}
