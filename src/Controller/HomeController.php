@@ -29,7 +29,13 @@ class HomeController extends AbstractController
         array_multisort(array_map(function($element) {
         return $element['city']['name'];
         }, $content), SORT_ASC, $content);
-
+        
+        foreach ($content as &$element) {
+        array_splice($element, 2, 2);
+        }
+        foreach ($content as &$element) {
+        array_splice($element, 3, 1);
+        }
         
         return $this->json($content);
         //return $this->render('home.html.twig', ['content'=>$content]);
