@@ -16,7 +16,7 @@ class HomeController extends AbstractController
         $this->client = $client;
     }
     /**
-      * @Route("/home")
+      * @Route("/")
       */
     public function index(): Response
     {
