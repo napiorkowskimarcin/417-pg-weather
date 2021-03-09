@@ -2,9 +2,9 @@
     
 {% if stationInfo %}
     <ul>
-            <li>{{ stationInfo.id }}</li>
-            <li>{{ stationInfo.stCalcDate}}</li>
-            <li>{{ stationInfo.stIndexLevel.indexLevelName }}</li>
+            <li>Station ID: {{ stationInfo.id }}</li>
+            <li>Date of last update: {{ stationInfo.stCalcDate}}</li>
+            <li>Quality of the air: {{ stationInfo.stIndexLevel.indexLevelName }}</li>
     </ul>
 {% else %}
     <p> No data yet </p>
