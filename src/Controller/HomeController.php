@@ -2,10 +2,12 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Contracts\HttpClient\HttpClientInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class HomeController extends AbstractController
 {
@@ -38,7 +40,31 @@ class HomeController extends AbstractController
         }
         
         // return $this->json($content);
-        return $this->render('home.html.twig', ['content'=>json_encode($content)]);
+        return $this->render('home.html.twig', ['content'=>json_encode($content), 'stationInfo'=> '']);
+
+         
+    }
+    /**
+      * @Route("/getone/{id}")
+      */
+    public function getone($id): Response 
+    {
+        $id = strval($id) ;
+        $path = 'http://api.gios.gov.pl/pjp-api/rest/aqindex/getIndex/'.$id;
+
+        $response = $this->client->request(
+            'GET',
+            $path,
+        );
+        $content = $response->toArray();
+
+        $template = $this->render('home/_data_loop.html.twig', [
+            'stationInfo' => $content,
+            ])->getContent(); 
+        $response = new JsonResponse();
+        $response->setStatusCode(200);
+        
+        return $response->setData(['template' => $template ]); 
     }
     
 }

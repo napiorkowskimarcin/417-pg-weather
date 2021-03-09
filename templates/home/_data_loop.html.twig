@@ -1,0 +1,13 @@
+<div id="table">
+    
+{% if stationInfo %}
+    <ul>
+            <li>{{ stationInfo.id }}</li>
+            <li>{{ stationInfo.stCalcDate}}</li>
+            <li>{{ stationInfo.stIndexLevel.indexLevelName }}</li>
+    </ul>
+{% else %}
+    <p> No data yet </p>
+{% endif %}
+
+</div>
