@@ -9,11 +9,10 @@
     <form >
         <select id='station'>
         {% for el in content %}
-            <option value = {{el.id}}>{{ el.stationName}} </option>
+            <option value="{{el.id}}">{{ el.stationName}} </option>
         {% endfor %}
         </select>
     </form>
-
     </div>
   </div>
 </main>

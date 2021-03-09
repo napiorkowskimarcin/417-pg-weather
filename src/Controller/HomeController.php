@@ -24,9 +24,15 @@ class HomeController extends AbstractController
             'GET',
             'http://api.gios.gov.pl/pjp-api/rest/station/findAll'
         );
-         $content = $response->getContent();
+        
         $content = $response->toArray();
+        array_multisort(array_map(function($element) {
+        return $element['city']['name'];
+        }, $content), SORT_ASC, $content);
 
-        return $this->render('home.html.twig', ['content'=>$content]);
+        
+        return $this->json($content);
+        //return $this->render('home.html.twig', ['content'=>$content]);
     }
+    
 }
